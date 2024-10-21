@@ -5,9 +5,10 @@ import Select from "../ux/Form/Select/Select";
 import Textarea from "../ux/Form/Textarea/Textarea";
 import styles from "./GiftIdeaForm.module.css";
 import { GiftIdeaGeneratorContext } from "../../store/gift-idea-gen-context";
+import ErrorMessage from "../ux/ErrorMessage/ErrorMessage";
 
 export default function GiftIdeaForm() {
-    const { handleSubmit: onSubmit, loading } = useContext(GiftIdeaGeneratorContext);
+    const { handleSubmit: onSubmit, loading, errorMessage, clearError } = useContext(GiftIdeaGeneratorContext);
     const genderOptions = [
         {id: 'female', label: 'Female'},
         {id: 'male', label: 'Male'}
@@ -20,7 +21,8 @@ export default function GiftIdeaForm() {
         onSubmit(data);
     }
 
-    return <form onSubmit={handleSubmit}>
+
+    return <form onSubmit={handleSubmit} onChange={clearError}>
         <div className={styles.col2}>
             <Input required id={'occasion'} name={'occasion'} label={'Occasion'} type={'text'} placeholder={"Mother's Day"}/>
             <Input required id={'relationship'} name={'relationship'} label={'Relationship'} type={'text'} placeholder={'Mother'}/>
@@ -32,8 +34,7 @@ export default function GiftIdeaForm() {
         </div>
         <Input required id={'hobby'} name={'hobby'} label={'Hobbies & Interests'} type={'text'} placeholder={'Baking, Drawing with watercolor'}/>
         <Textarea required id={'personality'} name={'personality'} label={'Personality'} placeholder={'Quiet person who appreciates sentimental gifts'} rows="3"/>
-        {/* <Textarea required id={'cultural'} name={'cultural'} label={'Cultural & Religious Considerations'} placeholder={'None'} rows="3" />
-        <Textarea required id={'likes'} name={'likes'} label={'Likes & Dislikes'} placeholder={'Allergic to dogs'} rows="3"/> */}
-        <CtaButton text={loading ? 'Generating Ideas...' : 'Discover Gifts'} width="full" position="center" disabled={loading}/>
+        {errorMessage && <ErrorMessage message={errorMessage} />}
+        <CtaButton text={loading ? 'Generating Ideas...' : 'Discover Gifts'} width="full" position="center" disabled={loading || errorMessage}/>
     </form>
 }
