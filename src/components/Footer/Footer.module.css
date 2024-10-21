@@ -1,0 +1,13 @@
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 1.5rem;
+    border-top: 1px solid #d3d4da;
+    background: #4a4d59;
+}
+
+img {
+    max-width: 200px;
+}

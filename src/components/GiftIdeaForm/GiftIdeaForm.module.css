@@ -1,0 +1,14 @@
+.col2 {
+    display: flex;
+    gap: 1rem;
+}
+
+.col2 * {
+    flex-basis: 100%;
+}
+
+@media (max-width: 800px) {
+    .col2 {
+        flex-wrap: wrap;
+    }
+  }

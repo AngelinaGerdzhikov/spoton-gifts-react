@@ -1,0 +1,12 @@
+.wrapper {
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}

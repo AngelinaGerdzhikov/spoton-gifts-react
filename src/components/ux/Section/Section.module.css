@@ -1,0 +1,17 @@
+.wrapper {
+    padding: 4rem;
+    display: flex;
+}
+
+.wrapper.center {
+    justify-content: center;
+}
+
+.full {
+    flex-grow: 1;
+}
+
+.contained {
+    flex-grow: 1;
+    max-width: 1200px;
+}
